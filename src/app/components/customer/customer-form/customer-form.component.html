@@ -1,0 +1,70 @@
+<div class="container">
+    <section style="margin-left: 12rem;margin-top: 6rem;">
+        <div class="d-flex flex-row-reverse">
+            <div class="p-2">
+                <button class="btn btn-success" style="font-size: small;"><img src="assets/action-data/save.svg"
+                        width="20"> Save</button>
+            </div>
+        </div>
+        <div class="card p-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <app-angular-input label="Full Name"></app-angular-input>
+                </div>
+                <div class="col-md-6">
+                    <app-angular-select label="Department" [items]="department"></app-angular-select>
+                </div>`
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-3">
+                    <app-angular-date label="Date of Birth"></app-angular-date>
+                </div>
+                <div class="col-md-3">
+                    <app-angular-select label="Social Status" [items]="social"></app-angular-select>
+                </div>
+                <div class="col-md-6">
+                    <app-angular-input label="Username"></app-angular-input>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-3">
+                    <app-angular-select label="Gender" [items]="gender"></app-angular-select>
+                </div>
+                <div class="col-md-3">
+                    <app-angular-select label="Mmilitary Status" [items]="['1','2']"></app-angular-select>
+                </div>
+                <div class="col-md-6">
+                    <app-angular-input label="Password" type="password"></app-angular-input>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <app-angular-input label="Email" type="email"></app-angular-input>
+                </div>
+                <div class="col-md-6">
+                    <app-angular-select label="Branch" [items]="branch"></app-angular-select>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <app-angular-input label="Address">
+                    </app-angular-input>
+                </div>
+                <div class="col-md-3">
+                    <app-angular-select label="Salary Type" [items]="salaryType"></app-angular-select>
+                </div>
+                <div class="col-md-3">
+                    <app-angular-select label="Percentage Type" [items]="salaryType"></app-angular-select>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <app-angular-input label="Note"></app-angular-input>
+                </div>
+                <div class="col-md-6">
+                    <app-angular-input label="Salary" type="number"></app-angular-input>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
