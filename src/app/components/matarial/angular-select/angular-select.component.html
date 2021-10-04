@@ -1,0 +1,6 @@
+<mat-form-field class="w-100">
+    <mat-label>{{label}}</mat-label>
+    <mat-select required>
+        <mat-option *ngFor="let item of items" [value]="item">{{item}}</mat-option>
+    </mat-select>
+</mat-form-field>
