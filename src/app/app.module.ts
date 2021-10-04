@@ -19,6 +19,8 @@ import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { AngularDateComponent } from './components/matarial/angular-date/angular-date.component';
 import { AngularSelectComponent } from './components/matarial/angular-select/angular-select.component';
 import { CustomerFormComponent } from './components/customer/customer-form/customer-form.component';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 
@@ -45,7 +47,8 @@ import { CustomerFormComponent } from './components/customer/customer-form/custo
     MatDatepickerModule,
     MatSelectModule,
     MatNativeDateModule,
-    MatOptionModule
+    MatOptionModule,
+    MatTableModule
   ],
   bootstrap: [AppComponent],
 })
