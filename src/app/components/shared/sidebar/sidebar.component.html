@@ -1,0 +1,17 @@
+<section>
+    <div class="sidebar">
+        <div class="logo p-4">
+            <img src="assets/sidebar/Logo Wight.svg" alt="Logo" width="150">
+        </div>
+        <ul class="mt-2 p-0" style="display: flex;
+        flex-direction: column;">
+            <li class="d-flex d-flex d-flex p-3" *ngFor="let item of arralylist">
+                <div class="left-hover"></div>
+                <div class="list-icon mx-2">
+                    <img [src]="item.icon" [alt]="item.title" width="25">
+                </div>
+                <div class="list-name mx-4">{{item.title}}</div>
+            </li>
+        </ul>
+    </div>
+</section>

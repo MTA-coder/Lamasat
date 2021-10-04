@@ -1,0 +1,28 @@
+    * {
+        color: white;
+    }
+    
+    .sidebar {
+        width: 16rem;
+        background-color: #1468AB;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        overflow: overlay;
+        ul {
+            list-style-type: none !important;
+            li:hover {
+                background-color: #368ACE;
+                position: relative;
+                .left-hover {
+                    background-color: white;
+                    left: 0;
+                    width: 2px;
+                    height: 100%;
+                    position: absolute;
+                    margin-top: -16px;
+                }
+            }
+        }
+    }
