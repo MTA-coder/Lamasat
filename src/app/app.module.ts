@@ -8,6 +8,9 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { MainComponent } from './components/employee/main/main.component';
 import { ActionComponent } from './components/employee/action/action.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './components/login/login.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { MatInput, MatInputModule } from '@angular/material/input'
 
 @NgModule({
   declarations: [
@@ -15,12 +18,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SidebarComponent,
     NavbarComponent,
     MainComponent,
-    ActionComponent
+    ActionComponent,
+    LoginComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatInputModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
