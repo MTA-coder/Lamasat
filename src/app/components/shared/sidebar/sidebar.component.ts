@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  open: boolean = false;
+
   arralylist = [
     {
       icon: "assets/sidebar/Home.svg",

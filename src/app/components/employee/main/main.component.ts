@@ -1,26 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-
-export interface Employee {
-  name: string;
-  mobile: string;
-  email: string;
-  department: string;
-  branch: string;
-}
-
-const element: Employee[] = [
-  { name: "Tawfeq", email: "tawfeq@gmail.com", branch: "tech", department: "scetion", mobile: "+963 953429502" },
-  { name: "Tawfeq", email: "tawfeq@gmail.com", branch: "tech", department: "scetion", mobile: "+963 953429502" },
-  { name: "Tawfeq", email: "tawfeq@gmail.com", branch: "tech", department: "scetion", mobile: "+963 953429502" },
-  { name: "Tawfeq", email: "tawfeq@gmail.com", branch: "tech", department: "scetion", mobile: "+963 953429502" },
-  { name: "Tawfeq", email: "tawfeq@gmail.com", branch: "tech", department: "scetion", mobile: "+963 953429502" },
-  { name: "Tawfeq", email: "tawfeq@gmail.com", branch: "tech", department: "scetion", mobile: "+963 953429502" },
-  { name: "Tawfeq", email: "tawfeq@gmail.com", branch: "tech", department: "scetion", mobile: "+963 953429502" },
-  { name: "Tawfeq", email: "tawfeq@gmail.com", branch: "tech", department: "scetion", mobile: "+963 953429502" },
-  { name: "Tawfeq", email: "tawfeq@gmail.com", branch: "tech", department: "scetion", mobile: "+963 953429502" },
-  { name: "Tawfeq", email: "tawfeq@gmail.com", branch: "tech", department: "scetion", mobile: "+963 953429502" },
-]
+import { IEmployee } from 'src/app/API-entities/employee';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-main',
@@ -29,12 +9,28 @@ const element: Employee[] = [
 })
 export class MainComponent implements OnInit {
 
-  headers = ['Name', 'Mobile', 'Email', 'Department', 'Branch'];
-  datasource = element;
+  headers = ['Name', 'Mobile', 'Gender', 'Department', 'Branch'];
+  datasource: IEmployee[] = [];
 
-  constructor() { }
+  constructor(private _employeeService: EmployeeService) {
+    this.fetchData();
+  }
 
   ngOnInit(): void {
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.getEmployees();
+  }
+
+  getEmployees() {
+    this._employeeService.getAllEmployees().subscribe((response: any) => {
+      response.data.forEach((element: IEmployee) => {
+        this.datasource.push(element);
+      });
+      console.log(this.datasource);
+    });
   }
 
 }

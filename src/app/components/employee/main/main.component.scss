@@ -11,3 +11,7 @@ section {
     border-left: 2px solid;
     height: 35px;
 }
+
+:host ::ng-deep body.mat-typography {
+    background-color: red !important;
+}

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,9 +19,10 @@ import { AngularDateComponent } from './components/matarial/angular-date/angular
 import { AngularSelectComponent } from './components/matarial/angular-select/angular-select.component';
 import { CustomerFormComponent } from './components/customer/customer-form/customer-form.component';
 import { MatTableModule } from '@angular/material/table';
-
-
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/Auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,9 +36,10 @@ import { MatTableModule } from '@angular/material/table';
     AngularInputComponent,
     AngularDateComponent,
     AngularSelectComponent,
-    CustomerFormComponent
+    CustomerFormComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -48,8 +49,17 @@ import { MatTableModule } from '@angular/material/table';
     MatSelectModule,
     MatNativeDateModule,
     MatOptionModule,
-    MatTableModule
+    MatTableModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ]
 })
 export class AppModule { }

@@ -1,70 +1,117 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
 <div class="container">
     <section style="margin-left: 12rem;margin-top: 6rem;">
-        <div class="d-flex flex-row-reverse">
-            <div class="p-2">
-                <button class="btn btn-success" style="font-size: small;"><img src="assets/action-data/save.svg"
-                        width="20"> Save</button>
-            </div>
-        </div>
-        <div class="card p-5">
-            <div class="row">
-                <div class="col-md-6">
-                    <app-angular-input label="Full Name"></app-angular-input>
-                </div>
-                <div class="col-md-6">
-                    <app-angular-select label="Department" [items]="department"></app-angular-select>
-                </div>`
-            </div>
-            <div class="row mt-2">
-                <div class="col-md-3">
-                    <app-angular-date label="Date of Birth"></app-angular-date>
-                </div>
-                <div class="col-md-3">
-                    <app-angular-select label="Social Status" [items]="social"></app-angular-select>
-                </div>
-                <div class="col-md-6">
-                    <app-angular-input label="Username"></app-angular-input>
+        <form [formGroup]="employeeForm" (ngSubmit)="Submit()">
+            <div class="d-flex flex-row-reverse">
+                <div class="p-2">
+                    <button type="submit" class="btn btn-success" style="font-size: small;">
+                        <img src="assets/action-data/save.svg" width="20"> Save</button>
                 </div>
             </div>
-            <div class="row mt-2">
-                <div class="col-md-3">
-                    <app-angular-select label="Gender" [items]="gender"></app-angular-select>
+            <div class="card p-4" style="border-radius: 20px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" class="form-control" id="fullname" formControlName="full_name">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="department">Department</label>
+                        <div class="test" style="position: inherit;">
+                            <div class="select-arrow">
+                                <select name="" id="department" class="form-control" formControlName="department">
+                                    <option *ngFor="let item of department" [value]="item">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <app-angular-select label="Mmilitary Status" [items]="['1','2']"></app-angular-select>
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                        <label for="birth">Date of Birth</label>
+                        <input type="date" class="form-control" id="birth" formControlName="birth">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="social">Social Status</label>
+                        <select name="" id="social" class="form-control" formControlName="social">
+                            <option *ngFor="let item of social" [value]="item">{{item}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" formControlName="username">
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <app-angular-input label="Password" type="password"></app-angular-input>
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                        <label for="gender">Gender</label>
+                        <div class="select-arrow">
+                            <select name="" id="gender" class="form-control" formControlName="gender">
+                                <option *ngFor="let item of gender" [value]="item">{{item}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="status">Mmilitary Status</label>
+                        <div class="select-arrow">
+                            <select name="" id="status" class="form-control" formControlName="status">
+                                <option *ngFor="let item of ['1','2']" [value]="item">{{item}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" formControlName="password">
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" formControlName="email">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="branch">Branch</label>
+                        <div class="select-arrow">
+                            <select name="" id="branch" class="form-control" formControlName="branch">
+                                <option *ngFor="let item of branch" [value]="item">{{item}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" formControlName="address">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="salary">Salary Type</label>
+                        <div class="select-arrow">
+                            <select name="" id="salary" class="form-control" formControlName="salaryType">
+                                <option *ngFor="let item of salaryType" [value]="item">{{item}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="percentage">Percentage Type</label>
+                        <div class="select-arrow">
+                            <select name="" id="percentage" class="form-control" formControlName="percentage">
+                                <option *ngFor="let item of salaryType" [value]="item">{{item}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <label for="note">Note</label>
+                        <input type="text" class="form-control" id="note" formControlName="note">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="salary">Salary</label>
+                        <input type="number" class="form-control" id="salary" formControlName="salary">
+                    </div>
                 </div>
             </div>
-            <div class="row mt-2">
-                <div class="col-md-6">
-                    <app-angular-input label="Email" type="email"></app-angular-input>
-                </div>
-                <div class="col-md-6">
-                    <app-angular-select label="Branch" [items]="branch"></app-angular-select>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-md-6">
-                    <app-angular-input label="Address">
-                    </app-angular-input>
-                </div>
-                <div class="col-md-3">
-                    <app-angular-select label="Salary Type" [items]="salaryType"></app-angular-select>
-                </div>
-                <div class="col-md-3">
-                    <app-angular-select label="Percentage Type" [items]="salaryType"></app-angular-select>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-md-6">
-                    <app-angular-input label="Note"></app-angular-input>
-                </div>
-                <div class="col-md-6">
-                    <app-angular-input label="Salary" type="number"></app-angular-input>
-                </div>
-            </div>
-        </div>
+        </form>
     </section>
 </div>

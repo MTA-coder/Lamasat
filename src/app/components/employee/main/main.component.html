@@ -5,17 +5,19 @@
                 <tr>
                     <th *ngFor="let head of headers">{{head}}</th>
                     <th>
-                        <button class="btn btn-success">+ Add New Employee</button>
+                        <a routerLink="add">
+                            <button class="btn btn-success">+ Add New Employee</button>
+                        </a>
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let object of datasource" class="card mt-3" style="display: table-row;height: 65px;">
-                    <td>{{object.name}}</td>
-                    <td>{{object.mobile}}</td>
-                    <td>{{object.email}}</td>
-                    <td>{{object.department}}</td>
-                    <td>{{object.branch}}</td>
+                    <td>{{object.full_name}}</td>
+                    <td>{{object.phone}}</td>
+                    <td>{{object.gender}}</td>
+                    <td>{{object.department.name}}</td>
+                    <td>{{object.branch.name}}</td>
                     <td style="display: flex;justify-content: space-evenly;padding-top: 16px;">
                         <a href="#">
                             <img src="assets/action-data/Group 317.svg" width="29">
