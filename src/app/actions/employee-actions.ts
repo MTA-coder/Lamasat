@@ -15,15 +15,15 @@ export class EmployeeActions extends CRUDService<IEmployee> {
         return this.readEntities(undefined, '/all');
     }
 
-    updateEmployee(employee: IEmployee) {
-        this.updateEntity(employee.id, employee, '/update');
-    }
-
     findEmployee(Id: number): Observable<IEmployee> {
         return this.readEntity(Id, '/find');
     }
 
     deleteEmployee(Id: number): Observable<any> {
         return this.deleteEntity(Id, '/delete');
+    }
+
+    updateEmployee(Id: number, form: any): Observable<any> {
+        return this.updateQueryEntity(form, '/update/' + Id);
     }
 }

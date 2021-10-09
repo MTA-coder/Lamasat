@@ -22,6 +22,8 @@ export class EmployeeFormComponent implements OnInit {
   salaryType: string[] = ['percentege', 'fixed'];
 
   employeeForm: FormGroup;
+  employeeId: number;
+  isUpdated: boolean;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -31,13 +33,41 @@ export class EmployeeFormComponent implements OnInit {
     private _activeRoute: ActivatedRoute,
     private _router: Router
   ) {
+
     this.InitialForm();
     this.fetchData();
+    this.subscripeRoute();
   }
 
   ngOnInit(): void {
     this.InitialForm();
     this.fetchData();
+    this.subscripeRoute();
+  }
+
+  subscripeRoute() {
+    this._activeRoute.params.subscribe((params: Params) => {
+      this.employeeId = +params['employeeId'];
+      this.isUpdated = this.employeeId == undefined ? false : true;
+      if (this.isUpdated) this.initialValueForm();
+    });
+  }
+
+  initialValueForm() {
+    this._employeeService.getDetailsEmployee(this.employeeId).subscribe((response: any) => {
+      var employee: IEmployee = response.data;
+      this.employeeForm.patchValue({
+        full_name: employee.full_name,
+        department_id: employee.department.name,
+        branch_id: employee.branch.name,
+        birthday: employee.birthday,
+        gender: employee.gender,
+        phone: employee.phone,
+        address: employee.address,
+        type_salary: employee.type_salary,
+        default_salary: employee.department
+      });
+    });
   }
 
   fetchData() {
@@ -46,15 +76,11 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   fetchBranches() {
-    this._branchService.getAllBranches().subscribe((response: any) => this.department = response.data);
+    this._branchService.getAllBranches().subscribe((response: any) => this.branch = response.data);
   }
 
   fetchDepartments() {
-    this._departmentService.getAllDepartments().subscribe((response: any) => {
-      response.data.forEach((element: IDepartment) => {
-        this.department.push(element);
-      });
-    });
+    this._departmentService.getAllDepartments().subscribe((response: any) => this.department = response.data);
   }
 
   initialFormDetails() {
@@ -97,9 +123,17 @@ export class EmployeeFormComponent implements OnInit {
 
   Submit(data) {
     if (this.employeeForm.valid) {
-      this._employeeService.addEmployee(data).subscribe((response: any) => {
-        this._router.navigateByUrl('/main/employee');
-      });
+
+      if (this.isUpdated) {
+        this._employeeService.updateInfoEmployee(this.employeeId, this.employeeForm.value).subscribe((response: any) => {
+          this._router.navigateByUrl('employee/all');
+        });
+      } else {
+        this._employeeService.addEmployee(data).subscribe((response: any) => {
+          this._router.navigateByUrl('employee/all');
+        });
+      }
+
     }
   }
 

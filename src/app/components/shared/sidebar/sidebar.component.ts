@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
     }, {
       icon: "assets/sidebar/Emp.svg",
       title: "Employees",
-      href: "main/employee"
+      href: "employee/all"
     },
     {
       icon: "assets/sidebar/Daily task.svg",

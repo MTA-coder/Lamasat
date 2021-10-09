@@ -35,4 +35,8 @@ export class EmployeeService {
     removeEmployee(Id: number): Observable<any> {
         return this.employeeRequests.deleteEmployee(Id);
     }
+
+    updateInfoEmployee(Id: number, form: any): Observable<any> {
+        return this.employeeRequests.updateEmployee(Id, form);
+    }
 }

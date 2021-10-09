@@ -8,7 +8,6 @@ import { CustomerMainComponent } from './components/customer/customer-main/custo
 import { DepartmentMainComponent } from './components/department/department-main/department-main.component';
 import { EmployeeFormComponent } from './components/employee/action/employee-form/employee-form.component';
 import { EmployeeInfoComponent } from './components/employee/action/employee-info/employee-info.component';
-import { MainComponent } from './components/employee/main/main.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 
@@ -16,12 +15,14 @@ const routes: Routes = [
   {
     path: "login", component: LoginComponent
   }, {
-    path: "main/employee", component: MainPageComponent
+    path: "employee/all", component: MainPageComponent
   }, {
-    path: "main/employee/add", component: EmployeeFormComponent
+    path: "employee/form", component: EmployeeFormComponent
+  }, {
+    path: "employee/form/:employeeId", component: EmployeeFormComponent
   }
   , {
-    path: "main/employee/find/:employeeId", component: EmployeeInfoComponent
+    path: "employee/find/:employeeId", component: EmployeeInfoComponent
   }, {
     path: "branches/all", component: BranchesMainComponent
   }, {

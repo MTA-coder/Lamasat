@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   }
 
   routeHome() {
-    this._router.navigate(['main/employee']);
+    this._router.navigate(['employee/all']);
   }
 
 }

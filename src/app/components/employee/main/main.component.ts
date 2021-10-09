@@ -36,7 +36,7 @@ export class MainComponent implements OnInit {
   }
 
   GetEmployeeInfo(Id: number) {
-    this._router.navigate(['main/employee/find', Id]);
+    this._router.navigate(['employee/find', Id]);
   }
 
   DeleteEmployee(Id: number) {
@@ -65,6 +65,10 @@ export class MainComponent implements OnInit {
         )
       }
     })
+  }
+
+  routeToEdit(Id: number) {
+    this._router.navigate(['/employee/form', Id]);
   }
 
 }
