@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
 <div class="container">
     <section>
         <table class="w-100" style="text-align: center;">
@@ -5,27 +7,25 @@
                 <tr>
                     <th *ngFor="let head of headers">{{head}}</th>
                     <th>
-                        <a routerLink="customer/add">
-                            <button class="btn btn-success">+ Add New Employee</button>
-                        </a>
+                        <button class="btn btn-success" (click)="routeToAdd()">+ Add New Customer</button>
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let object of datasource" class="card mt-3" style="display: table-row;height: 65px;">
-                    <td>{{object.full_name}}</td>
+                    <td>{{object.name}}</td>
+                    <td>{{object.address}}</td>
+                    <td>{{object.serial}}</td>
                     <td>{{object.phone}}</td>
-                    <td>{{object.gender}}</td>
-                    <td>{{object.department.name}}</td>
-                    <td>{{object.branch.name}}</td>
+                    <td>{{object.type}}</td>
                     <td style="display: flex;justify-content: space-evenly;padding-top: 16px;">
-                        <img src="assets/action-data/Group 317.svg" width="29" (click)="GetEmployeeInfo(object.id)" style="cursor: pointer;">
+                        <img src="assets/action-data/Group 317.svg" width="29" (click)="GetCustomerInfo(object.id)" style="cursor: pointer;">
                         <div class="vl"></div>
                         <a href="#">
                             <img src="assets/action-data/edit.svg" width="29">
                         </a>
                         <div class="vl"></div>
-                        <img src="assets/action-data/delete.svg" width="25" (click)="DeleteEmployee(object.id)" style="cursor: pointer;">
+                        <img src="assets/action-data/delete.svg" width="25" (click)="DeleteCustomer(object.id)" style="cursor: pointer;">
                     </td>
                 </tr>
             </tbody>

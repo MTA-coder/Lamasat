@@ -1,8 +1,9 @@
 import { IBranch } from "./branch";
 import { IDepartment } from "./department";
+import { IUser } from "./user";
 
 export interface IEmployee {
-    Id: number;
+    id: number;
     full_name: string;
     gender: string;
     birthday: Date;
@@ -14,4 +15,5 @@ export interface IEmployee {
     type_salary_of: string;
     branch: IBranch;
     department: IDepartment;
+    users: IUser[];
 }

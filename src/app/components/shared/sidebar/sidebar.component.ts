@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,7 +16,8 @@ export class SidebarComponent implements OnInit {
       title: "Home"
     }, {
       icon: "assets/sidebar/Emp.svg",
-      title: "Employees"
+      title: "Employees",
+      href: "main/employee"
     },
     {
       icon: "assets/sidebar/Daily task.svg",
@@ -23,15 +25,23 @@ export class SidebarComponent implements OnInit {
     },
     {
       icon: "assets/sidebar/customer.svg",
-      title: "Customers"
+      title: "Customers",
+      href: "customer/all"
     },
     {
       icon: "assets/sidebar/Dep.svg",
-      title: "Department"
+      title: "Department",
+      href: "department/all"
+    },
+    {
+      icon: "assets/sidebar/Category.svg",
+      title: "Categories",
+      href: "category/all"
     },
     {
       icon: "assets/sidebar/Branch.svg",
-      title: "Branch"
+      title: "Branch",
+      href: "branches/all"
     },
     {
       icon: "assets/sidebar/Orders.svg",
@@ -55,9 +65,13 @@ export class SidebarComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  routerTo(href: string) {
+    this._router.navigate([href]);
   }
 
 }

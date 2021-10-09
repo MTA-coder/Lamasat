@@ -1,9 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { EmployeeActions } from "../actions/employee-actions";
 import { StorageService } from "./storage.service";
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Injectable } from "@angular/core";
+import { IEmployee } from "../API-entities/employee";
 
 @Injectable({
     providedIn: 'root'
@@ -21,5 +22,17 @@ export class EmployeeService {
                 return throwError(err);
             })
         );
+    }
+
+    addEmployee(employee: IEmployee): Observable<IEmployee> {
+        return this.employeeRequests.createEmployee(employee);
+    }
+
+    getDetailsEmployee(Id: number): Observable<IEmployee> {
+        return this.employeeRequests.findEmployee(Id);
+    }
+
+    removeEmployee(Id: number): Observable<any> {
+        return this.employeeRequests.deleteEmployee(Id);
     }
 }

@@ -23,6 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/Auth/auth.interceptor';
+import { EmployeeInfoComponent } from './components/employee/action/employee-info/employee-info.component';
+import { BranchesMainComponent } from './components/branches/branches-main/branches-main.component';
+import { ModalModule } from 'ngb-modal';
+import { DepartmentMainComponent } from './components/department/department-main/department-main.component';
+import { CategoryMainComponent } from './components/category/category-main/category-main.component';
+import { CustomerMainComponent } from './components/customer/customer-main/customer-main.component';
+import { CustomerInfoComponent } from './components/customer/customer-info/customer-info.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +44,12 @@ import { AuthInterceptor } from './interceptors/Auth/auth.interceptor';
     AngularDateComponent,
     AngularSelectComponent,
     CustomerFormComponent,
+    EmployeeInfoComponent,
+    BranchesMainComponent,
+    DepartmentMainComponent,
+    CategoryMainComponent,
+    CustomerMainComponent,
+    CustomerInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -51,7 +64,8 @@ import { AuthInterceptor } from './interceptors/Auth/auth.interceptor';
     MatOptionModule,
     MatTableModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule
   ],
   bootstrap: [AppComponent],
   providers: [

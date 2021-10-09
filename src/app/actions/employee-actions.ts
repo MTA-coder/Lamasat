@@ -7,8 +7,8 @@ export class EmployeeActions extends CRUDService<IEmployee> {
         super(http, 'employee');
     }
 
-    createEmployee(employee: IEmployee) {
-        this.createEntity(employee, '/create')
+    createEmployee(employee: IEmployee): Observable<any> {
+        return this.createEntity(employee, '/create')
     }
 
     readEmployees(): Observable<IEmployee[]> {
@@ -16,10 +16,14 @@ export class EmployeeActions extends CRUDService<IEmployee> {
     }
 
     updateEmployee(employee: IEmployee) {
-        this.updateEntity(employee.Id, employee, '/update');
+        this.updateEntity(employee.id, employee, '/update');
     }
 
-    deleteEmployee(employee: IEmployee) {
-        this.deleteEntity(employee.Id, '/delete');
+    findEmployee(Id: number): Observable<IEmployee> {
+        return this.readEntity(Id, '/find');
+    }
+
+    deleteEmployee(Id: number): Observable<any> {
+        return this.deleteEntity(Id, '/delete');
     }
 }

@@ -5,7 +5,7 @@
         </div>
         <ul class="mt-2 p-0 custom-scrollbar" style="display: flex;
         flex-direction: column;">
-            <li class="d-flex d-flex d-flex p-3" *ngFor="let item of arralylist">
+            <li class="d-flex d-flex d-flex p-3" *ngFor="let item of arralylist" style="cursor: pointer;" (click)="routerTo(item.href)">
                 <div class="left-hover"></div>
                 <div class="list-icon mx-2">
                     <img [src]="item.icon" [alt]="item.title" width="25">

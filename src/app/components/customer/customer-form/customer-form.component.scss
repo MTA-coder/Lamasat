@@ -1,0 +1,19 @@
+label {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.select-arrow {
+    position: relative;
+    select {
+        appearance: none;
+    }
+}
+
+.select-arrow::after {
+    position: absolute;
+    top: 9px;
+    right: 24px;
+    content: "▶";
+    transform: rotate(90deg);
+}

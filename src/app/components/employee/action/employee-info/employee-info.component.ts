@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { IBranch } from 'src/app/API-entities/branch';
 import { IDepartment } from 'src/app/API-entities/department';
 import { IEmployee } from 'src/app/API-entities/employee';
@@ -9,11 +9,12 @@ import { DepartmentService } from 'src/app/services/department.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
-  selector: 'app-employee-form',
-  templateUrl: './employee-form.component.html',
-  styleUrls: ['./employee-form.component.scss']
+  selector: 'app-employee-info',
+  templateUrl: './employee-info.component.html',
+  styleUrls: ['./employee-info.component.scss']
 })
-export class EmployeeFormComponent implements OnInit {
+export class EmployeeInfoComponent implements OnInit {
+
 
   department: IDepartment[] = [];
   branch: IBranch[] = [];
@@ -29,7 +30,6 @@ export class EmployeeFormComponent implements OnInit {
     private _branchService: BranchService,
     private _employeeService: EmployeeService,
     private _activeRoute: ActivatedRoute,
-    private _router: Router
   ) {
     this.InitialForm();
     this.fetchData();
@@ -38,6 +38,7 @@ export class EmployeeFormComponent implements OnInit {
   ngOnInit(): void {
     this.InitialForm();
     this.fetchData();
+    this.initialFormDetails();
   }
 
   fetchData() {
@@ -46,7 +47,11 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   fetchBranches() {
-    this._branchService.getAllBranches().subscribe((response: any) => this.department = response.data);
+    this._branchService.getAllBranches().subscribe((response: any) => {
+      response.data.forEach((element: IBranch) => {
+        this.branch.push(element);
+      });
+    });
   }
 
   fetchDepartments() {
@@ -63,7 +68,25 @@ export class EmployeeFormComponent implements OnInit {
       var employee_id = +params['employeeId'];
       if (employee_id != undefined)
         this._employeeService.getDetailsEmployee(employee_id).subscribe((response: any) => {
-          console.log()
+          var employee: IEmployee = response.data;
+          console.log(employee);
+          this.employeeForm.patchValue({
+            full_name: employee.full_name,
+            department_id: employee.department.name,
+            branch_id: employee.branch.name,
+            birthday: employee.birthday,
+            //social: employee.,
+            //username: null,
+            gender: employee.gender,
+            //status: employee.satat,
+            //password: employee.,
+            phone: employee.phone,
+            address: employee.address,
+            type_salary: employee.type_salary,
+            //percentage: employee.per,
+            //note: [null],
+            default_salary: employee.department
+          });
         });
     });
 
@@ -90,17 +113,16 @@ export class EmployeeFormComponent implements OnInit {
       type_salary: [null],
       percentage: [null],
       note: [null],
-      default_salary: [0, Validators.min(0)],
-      user_scope: ["Employee"]
+      default_salary: [0, Validators.min(0)]
     }));
   }
 
   Submit(data) {
-    if (this.employeeForm.valid) {
-      this._employeeService.addEmployee(data).subscribe((response: any) => {
-        this._router.navigateByUrl('/main/employee');
-      });
-    }
+    this._employeeService.addEmployee(data).subscribe((response: any) => {
+      console.log(response.data);
+    });
   }
+
+
 
 }

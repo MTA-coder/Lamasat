@@ -3,7 +3,7 @@
 
 <div class="container">
     <section style="margin-left: 12rem;margin-top: 6rem;">
-        <form [formGroup]="employeeForm" (ngSubmit)="Submit()">
+        <form [formGroup]="employeeForm" (ngSubmit)="Submit(employeeForm.value)">
             <div class="d-flex flex-row-reverse">
                 <div class="p-2">
                     <button type="submit" class="btn btn-success" style="font-size: small;">
@@ -20,8 +20,8 @@
                         <label for="department">Department</label>
                         <div class="test" style="position: inherit;">
                             <div class="select-arrow">
-                                <select name="" id="department" class="form-control" formControlName="department">
-                                    <option *ngFor="let item of department" [value]="item">{{item}}</option>
+                                <select name="" id="department" class="form-control" formControlName="department_id">
+                                    <option *ngFor="let item of department" [value]="item.id">{{item.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                 <div class="row mt-4">
                     <div class="col-md-3">
                         <label for="birth">Date of Birth</label>
-                        <input type="date" class="form-control" id="birth" formControlName="birth">
+                        <input type="date" class="form-control" id="birth" formControlName="birthday">
                     </div>
                     <div class="col-md-3">
                         <label for="social">Social Status</label>
@@ -67,14 +67,14 @@
                 </div>
                 <div class="row mt-4">
                     <div class="col-md-6">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" formControlName="email">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" id="phone" formControlName="phone">
                     </div>
                     <div class="col-md-6">
                         <label for="branch">Branch</label>
                         <div class="select-arrow">
-                            <select name="" id="branch" class="form-control" formControlName="branch">
-                                <option *ngFor="let item of branch" [value]="item">{{item}}</option>
+                            <select name="" id="branch" class="form-control" formControlName="branch_id">
+                                <option *ngFor="let item of branch" [value]="item.id">{{item.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                     <div class="col-md-3">
                         <label for="salary">Salary Type</label>
                         <div class="select-arrow">
-                            <select name="" id="salary" class="form-control" formControlName="salaryType">
+                            <select name="" id="salary" class="form-control" formControlName="type_salary">
                                 <option *ngFor="let item of salaryType" [value]="item">{{item}}</option>
                             </select>
                         </div>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="salary">Salary</label>
-                        <input type="number" class="form-control" id="salary" formControlName="salary">
+                        <input type="number" class="form-control" id="salary" formControlName="default_salary">
                     </div>
                 </div>
             </div>
