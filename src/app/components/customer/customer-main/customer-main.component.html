@@ -21,9 +21,7 @@
                     <td style="display: flex;justify-content: space-evenly;padding-top: 16px;">
                         <img src="assets/action-data/Group 317.svg" width="29" (click)="GetCustomerInfo(object.id)" style="cursor: pointer;">
                         <div class="vl"></div>
-                        <a href="#">
-                            <img src="assets/action-data/edit.svg" width="29">
-                        </a>
+                        <img src="assets/action-data/edit.svg" width="29" (click)="routeToEdit(object.id)" style="cursor: pointer;">
                         <div class="vl"></div>
                         <img src="assets/action-data/delete.svg" width="25" (click)="DeleteCustomer(object.id)" style="cursor: pointer;">
                     </td>

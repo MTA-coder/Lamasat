@@ -36,4 +36,8 @@ export class CustomerService {
     removeCustomer(Id: number): Observable<any> {
         return this.customerRequests.deleteCustomer(Id);
     }
+
+    updateCustomerInformation(Id: number, form: any): Observable<any> {
+        return this.customerRequests.updateCustomer(Id, form);
+    }
 }

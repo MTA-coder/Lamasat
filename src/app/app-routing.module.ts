@@ -33,7 +33,10 @@ const routes: Routes = [
     path: "customer/all", component: CustomerMainComponent
   }
   , {
-    path: "customer/add", component: CustomerFormComponent
+    path: "customer/form", component: CustomerFormComponent
+  }
+  , {
+    path: "customer/form/:customerId", component: CustomerFormComponent
   }
   , {
     path: "customer/find/:customerId", component: CustomerInfoComponent

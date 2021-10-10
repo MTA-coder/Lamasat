@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ICustomer } from 'src/app/API-entities/customer';
-import { CustomerService } from 'src/app/services/customer.service copy';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-customer-info',
@@ -14,19 +14,28 @@ export class CustomerInfoComponent implements OnInit {
   type: string[] = ["partner", "big", "small", "direct"];
 
   customerForm: FormGroup;
+  customerId: number;
 
   constructor(
     private _formBuilder: FormBuilder,
     private _customerService: CustomerService,
     private _activeRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
   ) {
     this.initialForm();
+    this.subscripeRoute();
   }
 
   ngOnInit(): void {
     this.initialForm();
     this.initialFormDetails();
+    this.subscripeRoute();
+  }
+
+  subscripeRoute() {
+    this._activeRoute.params.subscribe((params: Params) => {
+      this.customerId = +params['customerId'];
+    });
   }
 
 
@@ -74,5 +83,9 @@ export class CustomerInfoComponent implements OnInit {
 
   Submit(data) {
     console.log(data);
+  }
+
+  routeToEdit() {
+    this._router.navigate(['customer/form', this.customerId]);
   }
 }

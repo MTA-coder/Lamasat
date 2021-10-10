@@ -19,6 +19,9 @@ export class CustomerActions extends CRUDService<ICustomer> {
         return this.readEntity(Id, '/find');
     }
 
+    updateCustomer(Id: number, form: any): Observable<any> {
+        return this.updateQueryEntity(form, '/update/' + Id);
+    }
 
     deleteCustomer(Id: number): Observable<any> {
         return this.deleteEntity(Id, '/delete');

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICustomer } from 'src/app/API-entities/customer';
-import { CustomerService } from 'src/app/services/customer.service copy';
+import { CustomerService } from 'src/app/services/customer.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -63,7 +63,11 @@ export class CustomerMainComponent implements OnInit {
   }
 
   routeToAdd() {
-    this._router.navigate(['customer/add']);
+    this._router.navigate(['customer/form']);
+  }
+
+  routeToEdit(Id: number) {
+    this._router.navigate(['customer/form', Id]);
   }
 
   GetCustomerInfo(Id: number) {

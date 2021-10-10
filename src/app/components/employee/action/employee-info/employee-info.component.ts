@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IBranch } from 'src/app/API-entities/branch';
 import { IDepartment } from 'src/app/API-entities/department';
 import { IEmployee } from 'src/app/API-entities/employee';
@@ -23,6 +23,7 @@ export class EmployeeInfoComponent implements OnInit {
   salaryType: string[] = ['percentege', 'fixed'];
 
   employeeForm: FormGroup;
+  employeeId: number;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -30,15 +31,24 @@ export class EmployeeInfoComponent implements OnInit {
     private _branchService: BranchService,
     private _employeeService: EmployeeService,
     private _activeRoute: ActivatedRoute,
+    private _router: Router
   ) {
     this.InitialForm();
     this.fetchData();
+    this.subscripeRoute();
   }
 
   ngOnInit(): void {
     this.InitialForm();
     this.fetchData();
     this.initialFormDetails();
+    this.subscripeRoute();
+  }
+
+  subscripeRoute() {
+    this._activeRoute.params.subscribe((params: Params) => {
+      this.employeeId = +params['employeeId'];
+    });
   }
 
   fetchData() {
@@ -75,16 +85,10 @@ export class EmployeeInfoComponent implements OnInit {
             department_id: employee.department.name,
             branch_id: employee.branch.name,
             birthday: employee.birthday,
-            //social: employee.,
-            //username: null,
             gender: employee.gender,
-            //status: employee.satat,
-            //password: employee.,
             phone: employee.phone,
             address: employee.address,
             type_salary: employee.type_salary,
-            //percentage: employee.per,
-            //note: [null],
             default_salary: employee.department
           });
         });
@@ -123,6 +127,7 @@ export class EmployeeInfoComponent implements OnInit {
     });
   }
 
-
-
+  routeToEdit() {
+    this._router.navigate(['employee/form', this.employeeId]);
+  }
 }
