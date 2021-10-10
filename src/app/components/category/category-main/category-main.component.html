@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<div class="container">
+    <section>
+        <table class="w-100" style="text-align: center;">
+            <thead>
+                <tr>
+                    <th *ngFor="let head of headers">{{head}}</th>
+                    <th>
+                        <button class="btn btn-success" (click)="Show(catModal,false,0)">+ Add New Category</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let object of datasource" class="card mt-3" style="display: table-row;height: 65px;">
+                    <td>{{object.name}}</td>
+                    <td>{{object.description}}</td>
+                    <td style="display: flex;justify-content: space-evenly;padding-top: 16px;">
+                        <img src="assets/action-data/edit.svg" width="35" style="cursor: pointer;" (click)="Show(catModal,true,object.id)">
+                        <div class="vl"></div>
+                        <img src="assets/action-data/delete.svg" width="25" (click)="DeleteCat(object.id)" style="cursor: pointer;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+
+<modal #catModal>
+    <modal-header>
+        Category Modal
+    </modal-header>
+
+    <modal-content>
+        <form action="" [formGroup]="categoryGroup" (ngSubmit)="Submit(categoryGroup.value)">
+            <label for="">Name</label>
+            <input type="text" class="form-control" formControlName="name" required>
+            <br>
+            <label for="">description</label>
+            <textarea class="form-control" formControlName="description" name="" id="" cols="30" rows="5" required></textarea>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-danger w-100" type="button" (click)="closeModal()">X Cancel</button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-success w-100" type="submit"> <img src="assets/action-data/save.svg"
+                            width="20">
+                        Save</button>
+                </div>
+            </div>
+        </form>
+    </modal-content>
+</modal>

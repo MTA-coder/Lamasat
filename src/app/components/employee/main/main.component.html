@@ -1,0 +1,32 @@
+<div class="container">
+    <section>
+        <table class="w-100" style="text-align: center;">
+            <thead>
+                <tr>
+                    <th *ngFor="let head of headers">{{head}}</th>
+                    <th>
+                        <a routerLink="/employee/form">
+                            <button class="btn btn-success">+ Add New Employee</button>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let object of datasource" class="card mt-3" style="display: table-row;height: 65px;">
+                    <td>{{object.full_name}}</td>
+                    <td>{{object.phone}}</td>
+                    <td>{{object.gender}}</td>
+                    <td>{{object.department.name}}</td>
+                    <td>{{object.branch.name}}</td>
+                    <td style="display: flex;justify-content: space-evenly;padding-top: 16px;">
+                        <img src="assets/action-data/Group 317.svg" width="29" (click)="GetEmployeeInfo(object.id)" style="cursor: pointer;">
+                        <div class="vl"></div>
+                        <img src="assets/action-data/edit.svg" width="29" (click)="routeToEdit(object.id)" style="cursor: pointer;">
+                        <div class="vl"></div>
+                        <img src="assets/action-data/delete.svg" width="25" (click)="DeleteEmployee(object.id)" style="cursor: pointer;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>

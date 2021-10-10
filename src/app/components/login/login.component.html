@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row login-page">
+        <div class="col-md-6 ">
+            <div class="img=left">
+                <img src="assets/Login/Login Pic.svg" alt="">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card p-4">
+                <div class="title">
+                    <img width="200" src="assets/Login/Login Logo.svg" alt="">
+                    <h1 class="mt-2">Welcome Back !</h1>
+                    <p>Please login to your account to access</p>
+                </div>
+                <div class="row align-items-baseline">
+                    <div class="col-md-1">
+                        <img src="assets/Login/Username Icon.svg" alt="">
+                    </div>
+                    <div class="col-md-11">
+                        <app-angular-input label="Username"></app-angular-input>
+                    </div>
+                </div>
+                <div class="row align-items-baseline">
+                    <div class="col-md-1">
+                        <img src="assets/Login/Password Icon.svg" alt="">
+                    </div>
+                    <div class="col-md-11">
+                        <app-angular-input label="Password" type="password"></app-angular-input>
+                    </div>
+                </div>
+                <button class="btn btn-primary mt-3" (click)="routeHome()">Login</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<div class="container">
+    <section style="margin-left: 12rem;margin-top: 6rem;">
+        <form [formGroup]="customerForm" (ngSubmit)="Submit(customerForm.value)">
+            <div class="d-flex flex-row-reverse">
+                <div class="p-2">
+                    <button type="submit" class="btn btn-danger" style="font-size: small;" (click)="routeToEdit()">
+                        <img src="assets/action-data/edit W.svg" width="20"> Edit</button>
+                </div>
+            </div>
+            <div class="card p-4" style="border-radius: 20px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="customerId">Customer ID </label>
+                        <input type="text" class="form-control" id="customerId" formControlName="serial" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="type">Type</label>
+                        <div class="test" style="position: inherit;">
+                            <div class="select-arrow">
+                                <select id="type" class="form-control" formControlName="type" disabled>
+                                    <option *ngFor="let item of type" [value]="item">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <label for="name">Name </label>
+                        <input type="text" class="form-control" id="name" formControlName="name" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" formControlName="email" readonly>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <label for="phone">Phone </label>
+                        <input type="text" class="form-control" id="phone" formControlName="phone" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" formControlName="address" readonly>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <label for="phone2">Phone 2</label>
+                        <input type="text" class="form-control" id="phone2" formControlName="phone2" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="shipment" class="mb-2">Shipment </label>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" formControlName="is_charge" value="true" disabled>
+                                    <label class="form-check-label">Yes</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" formControlName="is_charge" value="true" disabled>
+                                    <label class="form-check-label">No</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <label for="note">Note</label>
+                        <textarea name="" id="note" cols="30" rows="5" formControlName="note" class="form-control" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
