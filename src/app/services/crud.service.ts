@@ -7,7 +7,7 @@ export class CRUDService<T> {
   constructor(
     private http: HttpClient,
     protected readonly entityname: string,
-    protected readonly baseURL: string = environment.baseUrl
+    protected readonly baseURL: string = "http://mtatechno-001-site1.itempurl.com"
   ) {
     this.apiURL = `${this.baseURL}/${this.entityname}`;
   }
